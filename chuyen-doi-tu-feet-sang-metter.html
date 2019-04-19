@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>chuyen-doi-tu-feet-sang-metter</title>
+</head>
+<body>
+<input type="number" id="input">
+
+<select id="unitConvert">
+    <option value="feet">Feet</option>
+    <option value="meter">Meter</option>
+</select>
+<p>
+    = <span id="output"></span> <span id="unit"></span>
+</p>
+<script>
+    var input = document.getElementById('input');
+    var select = document.getElementById('unitConvert');
+
+    function convertUnit(val, unit) {
+        switch (unit) {
+            case 'feet':
+                console.log(val);
+                console.log(unit);
+                return val* 0.305;
+            case 'meter':
+                console.log(val);
+                console.log(unit);
+                return val * 3.279;
+        }
+    }
+
+    function displayOutput(val, unit) {
+        document.getElementById('output').innerText = val.toString();
+        if (unit=='feet')
+            document.getElementById('unit').innerText = 'meters';
+        else
+            document.getElementById('unit').innerText = 'foot';
+    }
+
+    input.addEventListener('input', () => {
+        displayOutput(convertUnit(parseFloat(input.value),select.value),select.value);
+    });
+
+    select.addEventListener('change', () => {
+        displayOutput(convertUnit(parseFloat(input.value),select.value),select.value);
+    });
+</script>
+</body>
+</html>
